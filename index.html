@@ -1,1 +1,47 @@
-Hello mylove
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.article
+		{
+			width: 60%;
+			margin-left: 20%;
+			top: 5%;
+			padding: 30px;
+			border: 2px solid #ccc;
+		}
+		.article code
+		{
+			font-size: 1.5rem;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="article">
+<h1>安装sublime text3</h1>
+这个直接百度sublime官网，就可以得到安装包，去官网下载，别下载什么汉化版，sublime里面没几个单词
+<h2>安装package control</h2>
+<b>command+shift+p</b>
+
+<p>然后输入install package control,等待安装完毕，这是一个sublime的插件管理程序，安装这个以后，就只需要利用它安装sublime的插件就可以了，不需要自己再去下载然后放到指定位置这些操作。</p>
+<h2>安装插件</h2>
+依然是command+shift+p，
+输入install package <br>就可以下载你需要的插件了，通常我会下载一个emmit,一个sidebarenhancement，还有一个1337的颜色主题，安装以后，关闭sublime，重新打开就可以看到生效了。修改主题在左上角的sublime text选项下的preferences里面的color scheme,选择自己想要的主题，还可以在preference中设置快捷键和字体等。比如我写网页的可以设置一个快速打开html文件的快捷键，在preferce中的key binding里面，右侧的方括号中输入
+
+<p><code>{"keys": ["command+enter"],"command":"open_in_browser"}</code></p>
+
+
+这时候就可以通过command加上enter来快速在浏览器中打开html文件了。
+<h2>命令行启动sublime</h2>
+在Ubuntu系统中，是可以直接通过subl命令在终端下面直接打开sublime编辑器的，在mac中需要定义一个环境变量
+
+<p><code>alias subl=\''/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'\'</code></p>
+
+在我的电脑上，sublime的位置是这个，你可以根据你的sublime位置的不同，来更改一下。
+然后在命令行中就可以输入subl命令打开了
+	</div>
+</body>
+</html>
