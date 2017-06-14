@@ -2,48 +2,71 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		.article
-		{
-			width: 60%;
-			margin-left: 20%;
-			top: 5%;
-			padding: 30px;
-			border: 2px solid #ccc;
-		}
-		.article code
-		{
-			font-size: 1.5rem;
+	<title>我的个人简介</title>
 
-		}
-	</style>
+	<link rel="stylesheet" href="css/main.css">
+
+
+
 </head>
 <body>
-	<div class="article">
-<h1>安装sublime text3</h1>
-这个直接百度sublime官网，就可以得到安装包，去官网下载，别下载什么汉化版，sublime里面没几个单词
-<h2>安装package control</h2>
-<b>command+shift+p</b>
+   <div class="main">
+   <div class="container">
+   	<div class="nav">
+   	  <h1><a href="index.html">曹 启 斌</a></h1>
+        <span>
+        <a href="">简介</a>
+        <a href="">项目</a>
+        <a href="">博客</a>
+        <a href="">主页</a>
+        
+        
+        
+        </span>
+      </div>
+      <div class="body" id="home">
+         <div class="left">
+         <div class="skew"><div><b>Hello</b></div></div>
+         <h2>我是曹启斌</h2>
+         <h3>前端实习</h3>
+         <h3>JavaScript / Node.JS / React</h3>
+         <hr>
+         <h3>PHONE:  17607178834</h3>
+         <h3>EMAIL:  986619667@qq.com</h3>
+         <h3><a href="https://github.com/inertiabeer" style="color: #000">Github:   https://github.com/inertiabeer</a></h3>
+         </div>
+      </div>
+      <div id="blog" class="content">
+         <h1>博客</h1>
+         <article>
+            <img src="img/webpack.png" alt="webpack">
+            <h2><a href="https://caoqibin.wordpress.com/2017/05/09/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Webpack学习笔记</a></h2>
+            <p>如何搭建一个webpack环境，并实现初步的打包功能</p>
+         </article>
+         <article>
+            <img src="img/react.png" alt="react">
+            <h2><a href="https://caoqibin.wordpress.com/2017/05/15/webpack%E4%B8%AD%E5%8A%A0%E8%BD%BDreact/">Webpack中加载react</a></h2>
+            <p>这篇文章主要记录我初期学习react的时候，如何在webpack导入react的</p>
+            <p>主要练习代码可以在github上查看<a href="https://github.com/inertiabeer/webpack-test/tree/master/webpack-test"><h1>点击查看</h1></a></p>
+         </article>
+         <article>
+            <img src="img/express.jpg" alt="express">
+            <h2><a href="http://blog.csdn.net/inertiapeer/article/details/55805494">express的api练习</a></h2>
+            <p>express中文版的api其实只有一小部分，我就按着字面上的意思，进行翻译。花了大概两三天的事情，基本上把常见的api都用了一边，博客中有部分练习的代码</p>
+   
+         </article>
+         <h2><a href="http://blog.csdn.net/inertiapeer">点击进入我的csdn博客</a></h2>
 
-<p>然后输入install package control,等待安装完毕，这是一个sublime的插件管理程序，安装这个以后，就只需要利用它安装sublime的插件就可以了，不需要自己再去下载然后放到指定位置这些操作。</p>
-<h2>安装插件</h2>
-依然是command+shift+p，
-输入install package <br>就可以下载你需要的插件了，通常我会下载一个emmit,一个sidebarenhancement，还有一个1337的颜色主题，安装以后，关闭sublime，重新打开就可以看到生效了。修改主题在左上角的sublime text选项下的preferences里面的color scheme,选择自己想要的主题，还可以在preference中设置快捷键和字体等。比如我写网页的可以设置一个快速打开html文件的快捷键，在preferce中的key binding里面，右侧的方括号中输入
 
-<p><code>{"keys": ["command+enter"],"command":"open_in_browser"}</code></p>
-
-
-这时候就可以通过command加上enter来快速在浏览器中打开html文件了。
-<h2>命令行启动sublime</h2>
-在Ubuntu系统中，是可以直接通过subl命令在终端下面直接打开sublime编辑器的，在mac中需要定义一个环境变量
-通过<code>vim ~/.bash_profile</code>打开用户的配置文件<br>
-然后在最后加上
-
-<p><code>alias subl=\''/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'\'</code></p>
-
-在我的电脑上，sublime的位置是这个，你可以根据你的sublime位置的不同，来更改一下。
-然后在命令行中就可以输入subl命令打开了
-	</div>
+      </div>
+      <div id="project" class="content">
+        <h1>项目</h1>
+        <div class="projects">
+          
+        </div>
+      </div>
+   </div>
+   	
+   </div>
 </body>
 </html>
