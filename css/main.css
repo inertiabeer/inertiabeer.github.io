@@ -12,6 +12,7 @@ a{
 
 }
 
+
 .main
 {
 	width: 100%;
@@ -50,7 +51,7 @@ a{
 }
 .nav>span>a:hover
 {
-	color: red;
+	color: white;
 }
 
 .nav>h1>a
@@ -90,6 +91,7 @@ a{
 	transform: skewX(-45deg);
 
 }
+
 .skew>div
 {
 	transform: skewX(45deg);
@@ -124,21 +126,36 @@ a{
 article
 {
 	width: 100%;
-	margin: 6em 0;
+	margin: 3em 0;
 	clear: both;
+	padding: 2em;
+
 
 }
 article>img
 {
 	width: 50%;
 	float: left;
+	min-width: 290px;
 
 
 }
 .projects
 {
 	width: 90%;
+
 }
+.projects>img
+{
+	width: 76%;
+	margin-left: 12%;
+	margin-top: 5em;
+}
+a:hover
+{
+	color: #23D6E7;
+}
+
 
 
 
