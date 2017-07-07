@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Begar sort</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<style>
+		 @keyframes roll 
+	 {
+	 	0%
+	 	{
+	 		box-shadow: 5px -5px 10px;
+
+	 	}
+
+	 	50%
+	 	{
+	 		box-shadow: 5px -5px 30px;
+
+	 	}
+
+	 	100%
+	 	{
+	 		box-shadow: 5px -5px 10px;
+	 	}
+	 }
+		body
+		{
+			background-color: #272829;
+			min-height: 600px;
+			color: white;
+		}
+		.nav
+		{
+			height: 20%;
+			padding: 30px;
+			font-size: 3rem;
+			background-color: hsla(0,0, 100%,0.4);
+			box-shadow: 3px 3px 5px #000;
+			margin-bottom: 30px;
+
+		}
+		.sidebar
+		{
+			width: 25%;
+			float: left;
+			min-height: 600px;
+			box-shadow: 5px -5px 10px;
+			animation: roll 3s linear infinite;
+		
+		}
+		.content
+		{
+			width: 75%;
+			min-height: 600px;
+			float: left;
+			text-align: center;
+		
+			
+
+		}
+		.content>div
+		{
+			width: 33%;
+			height: 50%;
+			float: left;
+			padding: 3rem;
+		}
+
+
+
+	</style>
+</head>
+<body>
+<div class="nav">
+	<li role="presentation" class="active"><a href="javascript:;" onclick="addFight()">创建赛事</a></li>
+</div>
+<div class="main">
+	<div class="sidebar">
+	<table id="table" class="table table-hover">
+	<tbody>
+         <tr>
+            <th>编号</th>
+            <th>队伍名</th>
+            <th><a href='javascript:;' onclick='allClear(this)'>全部删除</a></th>
+          </tr>
+         <tr>
+         	<th>1</th>
+         	<th><input type="text" id="addTeam"></th>
+         	<th><a href='javascript:;' onclick='add(this)'>添加</a></th>
+         </tr>
+
+    </tbody>
+        </table>
+	</div>
+	<div class="content"></div>
+</div>
+<script src='begar.js'></script>
+<script>
+function add(obj)
+	{
+		var addTr=obj.parentNode.parentNode;
+		var th=addTr.getElementsByTagName('th');
+		var index=th[0].innerText;
+		var teamName=document.getElementById('addTeam').value;
+
+		var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        var td2 = document.createElement("td");
+        var td3 = document.createElement("td");
+        td1.innerHTML=index;
+        td2.innerHTML=teamName;
+        td3.innerHTML="<a href='javascript:;'  onclick='de(this)'>删除</a>";
+        var tab=document.getElementById("table");
+        var tbody=document.getElementsByTagName('tbody')[0];
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tbody.insertBefore(tr,tbody.lastElementChild);
+        th[0].innerText=parseInt(index)+1;
+        document.getElementById('addTeam').value='';
+
+
+	};
+	function de(obj)
+	{
+		var tr=obj.parentNode.parentNode;
+		tr.parentNode.removeChild(tr);
+		 var tbody=document.getElementsByTagName('tbody')[0];
+		 var trList=[].slice.call(tbody.children);
+		 console.log(trList);
+		 for(var i=1;i<trList.length;i++)
+		 {
+		 	trList[i].firstElementChild.innerText=i;
+		 }
+
+
+	};
+	function addFight()
+	{
+		var teams=[];
+		var tbody=document.getElementsByTagName('tbody')[0];
+		 var trList=[].slice.call(tbody.children);
+		 for(var i=1;i<trList.length-1;i++)
+		 {
+		 	teams.push(trList[i].firstElementChild.nextElementSibling.innerText);
+		 }
+		var tableList=Begar(teams);//调用写好的函数
+		console.log(tableList);
+		var content=document.getElementsByClassName('content')[0];
+		tableList.forEach(function(item,index){
+			var container=document.createElement('div');
+			var h1=document.createElement('h1')
+			var text=document.createTextNode("第"+(index+1)+"轮");
+			h1.appendChild(text);
+			container.appendChild(h1);
+
+			var table=document.createElement('table');
+			item.forEach(function(fightItem,index){
+				var tr=document.createElement('tr');
+		        var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                var td3 = document.createElement("td");
+                td1.innerText=fightItem[0];
+                td2.innerText="VS";
+                td3.innerText=fightItem[1];
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                table.appendChild(tr);
+
+			})
+			table.setAttribute('class','table table-hover');
+			container.appendChild(table);
+		    content.appendChild(container);
+
+		})
+
+	};
+	function allClear(obj)
+	{
+
+		var tbody=obj.parentNode.parentNode.parentNode;
+		var trs=[].slice.call(tbody.children);
+		console.log(trs);
+		for(;tbody.children.length>2;)
+		{
+		tbody.removeChild(tbody.children[1]);
+		}
+		tbody.children[1].firstElementChild.innerText='1';
+
+
+
+	}
+
+</script>
+</body>
+</html>
