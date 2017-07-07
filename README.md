@@ -6,7 +6,7 @@
 
 [Github](https://github.com/inertiabeer)
 
-[GitPage](https://inertiabeer.github.io/)
+[GitPage](https://inertiabeer.github.io/gitpage.html)
 
 ## 项目预览
 

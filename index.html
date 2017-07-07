@@ -1,86 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>我的个人简介</title>
-
-	<link rel="stylesheet" href="css/main.css">
-
-
-
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
 </head>
 <body>
-   <div class="main">
-   <div class="container">
-   	<div class="nav">
-   	  <h1><a href="index.html">曹 启 斌</a></h1>
-        <span>
-        <a href="./resume.html">简历</a>
-        <a href="javascript:void(0)" onclick="project()">项目</a>
-        <a href="javascript:void(0)" onclick="blog()">博客</a>
-        <a href="javascript:void(0)" onclick="home()">主页</a>
-        
-        
-        
-        </span>
-      </div>
-      <div class="body" id="home">
-         
-         <div class="left">
-         <div class="skew"><div><b>Hello</b></div></div>
-         <h2>我是曹启斌</h2>
-         <h3>前端实习</h3>
-         <h3>JavaScript / Node.JS / React</h3>
-         <hr>
-         <h3>PHONE:  17607178834</h3>
-         <h3>EMAIL:  986619667@qq.com</h3>
-         <h3><a href="https://github.com/inertiabeer" style="color: #000">Github:   https://github.com/inertiabeer</a></h3>
-         </div>
-      </div>
-      <div id="blog" class="content">
-         <h1>博客</h1>
-         <article>
-            <img src="img/webpack.png" alt="webpack">
-            <h2><a href="https://caoqibin.wordpress.com/2017/05/09/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Webpack学习笔记</a></h2>
-            <p>如何搭建一个webpack环境，并实现初步的打包功能</p>
-         </article>
-         <article>
-            <img src="img/react.png" alt="react">
-            <h2><a href="https://caoqibin.wordpress.com/2017/05/15/webpack%E4%B8%AD%E5%8A%A0%E8%BD%BDreact/">Webpack中加载react</a></h2>
-            <p>这篇文章主要记录我初期学习react的时候，如何在webpack导入react的</p>
-            <p>主要练习代码可以在github上查看<a href="https://github.com/inertiabeer/webpack-test/tree/master/webpack-test"><h1>点击查看</h1></a></p>
-         </article>
-         <article>
-            <img src="img/express.jpg" alt="express">
-            <h2><a href="http://blog.csdn.net/inertiapeer/article/details/55805494">express的api练习</a></h2>
-            <p>express中文版的api其实只有一小部分，我就按着字面上的意思，进行翻译。花了大概两三天的事情，基本上把常见的api都用了一遍，博客中有部分练习的代码</p>
-   
-         </article>
-         <h2><a href="http://blog.csdn.net/inertiapeer">点击进入我的csdn博客</a></h2>
-
-
-      </div>
-      <div id="project" class="content">
-        <h1>项目</h1>
-        <div class="projects">
-        <img src="img/webgis.jpg" alt="" style="">
-        <h2><a href="http:139.199.206.187:4000" target="view_window">点击查看效果</a></h2>
-        <h2><a href="https://github.com/inertiabeer/web-gis" target="view_window">源码地址</a></h2>
-        <div class="projects">
-        <img src="img/map.jpg" alt="">
-        <h2><a href="http:139.199.206.187:3000" target="view_window">点击查看效果</a></h2>
-        <h2><a href="https://github.com/inertiabeer/AMap" target="view_window">源码地址</a></h2>
-
-          
-        </div>
-
-
-          
-        </div>
-      </div>
-   </div>
-   	
-   </div>
-   <script src='js/main.js'></script>
+  <div id="app"></div>
 </body>
+<script>
+  window.$docsify = {
+    name: '',
+    repo: ''
+  }
+</script>
+<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script>
+  if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('sw.js')
+  }
+</script>
 </html>
