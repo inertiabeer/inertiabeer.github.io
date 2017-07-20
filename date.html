@@ -134,7 +134,10 @@
             m=month;
         }
         var result=twoNumsYear+Math.floor(twoNumsYear/4)+Math.floor(century/4)-2*century+Math.floor(26*(m+1)/10);
+
         var week=result%7;
+        week=(week+7)%7;
+        console.log(week);
         for(var i=1;i<=containDays+week;)　
         {
             var tr=document.createElement('tr');
@@ -157,8 +160,6 @@
                 tr.appendChild(td);
 
             }
-
-
             document.getElementById("tbody").appendChild(tr);
 
 
