@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>date</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #table{
+            width: 50%;
+            margin:0 auto;
+            height:50%;
+            background-color: #00b88d;
+
+        }
+    </style>
+</head>
+<body>
+<tr>
+    <th><label for="year">输入年份</label><input type="text" id="year"></th>
+    <th><label for="month">输入月份</label><input type="text" id="month" ></th>
+
+    <th><button onclick="commit()">提交</button></th>
+</tr>
+<table class="table table-bordered" id="table">
+    <tbody id="tbody">
+
+    <tr>
+        <th>星期日</th>
+        <th>星期一</th>
+        <th>星期二</th>
+        <th>星期三</th>
+        <th>星期四</th>
+        <th>星期五</th>
+        <th>星期六</th>
+    </tr>
+
+    </tbody>
+</table>
+
+<script>
+    function commit()
+    {
+        var tbody=document.getElementById("tbody");
+        while(tbody.children.length>1)
+        {
+            tbody.removeChild(tbody.lastElementChild);
+        }
+
+        var year=document.getElementById("year").value;
+
+        var month=parseInt(document.getElementById("month").value);
+        var n=0;//非闰年28
+        if((year%4===0&&year%100!=0)||year%400===0)
+        {
+            n=1;
+
+        }
+        var baseday//每个月之前的所有天数
+        var containDays//每个月包含的天数
+        switch (parseInt(month))
+        {
+            case 1:
+                baseday=0;
+                containDays=31;
+                break;
+            case 2:
+                baseday=31;
+                containDays=28+n;
+                break;
+            case 3:
+                baseday=31+28+n;
+                containDays=31;
+                break;
+            case 4:
+                baseday=59+n+31;
+                containDays=30;
+                break;
+            case 5:
+                baseday=90+n+30;
+                containDays=31;
+                break;
+            case 6:
+                baseday=120+n+31;
+                containDays=30;
+                break;
+            case 7:
+                baseday=151+n+30;
+                containDays=31;
+                break;
+            case 8:
+                baseday=181+n+31;
+                containDays=31;
+                break;
+            case 9:
+                baseday=212+31+n;
+                containDays=30;
+                break;
+            case 10:
+                baseday=n+243+30;
+                containDays=31;
+                break;
+            case 11:
+                baseday=273+n+31;
+                containDays=30;
+                break;
+            case 12:
+                baseday=304+n+30;
+                containDays=31;
+                break;
+
+
+
+
+
+
+
+        }
+        var m;
+
+        var century=parseInt(year.slice(0,-2));//这里准备用ｚｅｌｌｅｒ公式，所以先求出世纪
+        console.log(century);
+        var twoNumsYear=parseInt(year.slice(-2));//这里是两位数的年份
+        console.log( twoNumsYear);
+        if(month<3)
+        {
+            m=month+12;
+            twoNumsYear=twoNumsYear-1;
+        }
+        else
+        {
+            m=month;
+        }
+        var result=twoNumsYear+Math.floor(twoNumsYear/4)+Math.floor(century/4)-2*century+Math.floor(26*(m+1)/10);
+        var week=result%7;
+        for(var i=1;i<=containDays+week;)　
+        {
+            var tr=document.createElement('tr');
+            for( var j=1;j<=7;j++)
+            {
+                var td=document.createElement('td');
+                var text;
+                if((i<=week)||i>containDays+week)
+                {
+                     text=document.createTextNode(" ");
+
+
+                }
+                else
+                {
+                    text=document.createTextNode(i-week);
+                }
+                i++;
+                td.appendChild(text);
+                tr.appendChild(td);
+
+            }
+
+
+            document.getElementById("tbody").appendChild(tr);
+
+
+
+
+        }
+
+
+
+
+
+    }
+</script>
+</body>
+</html>
