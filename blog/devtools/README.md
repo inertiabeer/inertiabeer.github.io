@@ -17,7 +17,22 @@
 摄像机按钮如果选中的话，是可以记录一部分网页的截图在下方显示
 如果点击截图，会显示当前时间的所有network，双击显示大图
 这个时间间隔的原理我没有找到资料，官网说的是增量图像。
-下面说一下这个Resource timing 
+可以在这一行的最右端选择模拟网络环境较差的移动端3g 2g等，也可以自定义网络限制
+下面说一下这个Resource timing
+
+### Filter的一些用法
+
+![larger-than](../../img/larger-than.png)
+Filter除了可以用匹配字符串匹配资源外
+还可以通过一些关键词。但是我觉得可能实用性并没有那么强，下面是链接，感兴趣的话可以自己去看看
+
+https://developers.google.com/web/tools/chrome-devtools/network-performance/resource-loading?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3#_5
+
+### 自定义network面板 
+
+![add-remove](../../img/add-remove-columns.png)
+可以通过右键点击，添加或者删除行列，实现定制化，比如查看gzip和cache这些的时候不需要每一个资源都打开查看了。
+
 ### Resource timing阶段
 
 #### 重定向
@@ -62,13 +77,37 @@ responseEnd 是请求结束并且数据完成检索的时间。
 等待初始响应所用的时间，也称为至第一字节的时间。 此时间将捕捉到服务器往返的延迟时间，以及等待服务器传送响应所用的时间。这就是等待服务器的相应时间。
 #### Content Download / Downloading
 接收响应数据所用的时间。
+
 ### 资源加载时间分析
+
 #### dns时间
-通常dns解析时间是不在考虑的范围里面的，但是在一些比较大的门户站点，比如新浪，尤其是一些没有开keep alive的服务器，dns解析的时间也挺长的，下面是dns预解析的步骤1. 用meta信息来告知浏览器, 当前页面要做DNS预解析:<meta http-equiv="x-dns-prefetch-control" content="on" />
-2. 在页面header中使用link标签来强制对DNS预解析: <link rel="dns-prefetch" href="http://bdimg.share.baidu.com" />
+通常dns解析时间是不在考虑的范围里面的，但是在一些比较大的门户站点，比如新浪，尤其是一些没有开keep alive的服务器，dns解析的时间也挺长的，
+下面这个dns的时间占比快一半了。
+![dns解析时间过长](../../img/dns.png)
+下面是dns预解析的步骤
+
+1. 用meta信息来告知浏览器, 当前页面要做DNS预解析:
+```
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+```
+2. 在页面header中使用link标签来强制对DNS预解析: 
+```
+<link rel="dns-prefetch" href="http://bdimg.share.baidu.com" />
+```
+
+#### tcp初始化连接时间
+由于tcp协议的慢启动特性，如果每一个请求，都新建一个链接，三次握手和四次挥手的时间成本其实挺高的。例如下图
+![tcp初始化时间过长](../../img/tcp_init.png)
+这个域名下的connection是close的，也就是请求之后，这个tcp链接就关闭了。如果后续还有其他请求，新建一个tcp连接的时间成本过高了。
+
 #### 排队时间长
+
 排队时间过长的话，是因为浏览器的设置每台主机最多同时六个tcp连接，这时候就需要域名分散，将资源分布到多个域名下，但是在http2.0中不需要这样做，在 HTTP 2 中，到服务器的单个 TCP 连接作为多路复用连接。这消除了 HTTP 1 中的六个连接限制，并且可以通过单个连接同时传输多个资源。
+
 #### 绿色时间过长
+
 原因一般有两个，一个是客户端到服务器的网络条件过差，另一个是因为服务器的处理速度过慢，在测试新首页改版的时候，经常会出现某一个很小的资源加载了几百ms的情况，这就是后台的处理资源的问题了。前者可以通过cdn在全国各地设立资源托管，后者，需要后端的一些优化，减少响应时间。
+
 #### 蓝色时间过长
+
 Content Download 阶段花费了大量时间，这时候可以通过gzip，雪碧图，图片处理压缩等方式，降低时间。
