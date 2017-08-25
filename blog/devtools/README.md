@@ -7,8 +7,23 @@
 3. 左侧点击添加和取消断点
 ![这是图片](../../img/duandian.png)
 
-## source模块
 
+## Performance
+
+先介绍这上面的一行，分别是记录，刷新，清除，截屏，内存，调用gc
+这里其实也是可以限制网络和cpu的性能的。
+
+### fps面板
+
+ctrl+shift+p然后输入命令"show rendering"
+这时候可以选择FPS meter，然后界面中就会出现一个仪表板，显示网页实时的fps，内存占用的情况。测试动画的话还是挺好用的。
+![渲染界面](../../img/render.png)
+
+选中screenshot然后点击record，这时候就会记录界面中的截图，用鼠标hover上去，就能显示对应时间的界面，然后点击就可以显示对应的时间。
+
+### performance中的network
+
+之所以介绍这里面的network，是因为这上面会显示每一个资源的优先级。
 
 
 ## 网络性能
