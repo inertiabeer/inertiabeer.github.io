@@ -40,6 +40,8 @@
 
 [JsonP实践](/blog/jsonp/)
 
+[Chrome devtools](/blog/devtools/)
+
 
 
 
